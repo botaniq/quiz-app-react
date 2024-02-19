@@ -27,10 +27,12 @@ export default function Question({ index, onSelectAnswer, onSkipAnswer }) {
     }, 1000);
   }
 
-  let answerState = "";
+  let answerState = null;
 
-  if (answer.selectedAnswer) {
+  if (answer.selectedAnswer && answer.isCorrect !== null) {
     answerState = answer.isCorrect ? "correct" : "wrong";
+  } else if (answer.selectedAnswer) {
+    answerState = "answered";
   }
 
   return (
